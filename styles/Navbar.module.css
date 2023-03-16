@@ -1,0 +1,99 @@
+.main {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: calc(100% - var(--sidebar-width));
+  height: var(--navbar-height);
+  background-color: #18181b;
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  transition: all .3s;
+}
+.menu_btn {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  visibility: hidden;
+}
+.menu_btn:hover {
+  background-color: black;
+}
+.menu_btn img {
+  height: 26px;
+  width: 26px;
+}
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.blog_btn {
+  border: 1px solid #0283E9;
+  outline: none;
+  background-color: transparent;
+  /* background-color: black; */
+  color: #0283E9;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.blog_btn:hover {
+  color: white;
+  background-color: #0283E9;
+}
+
+.lang_btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  outline: none;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: black;
+  color: #CDCDCD;
+}
+.lang_btn:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.lang_btn img {
+  height: 24px;
+  width: 24px;
+}
+.switcher {
+  display: flex;
+  align-items: center;
+}
+.switcher img {
+  height: 22px;
+  width: auto;
+}
+.lang {
+  font-size: 14px;
+}
+.active {
+  font-weight: 700;
+  color: #0283E9;
+}
+
+
+@media only screen and (max-width: 800px) {
+  .main {
+    width: 100%;
+  }
+  .menu_btn {
+    visibility: visible;
+  }
+}

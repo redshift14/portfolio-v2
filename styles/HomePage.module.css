@@ -1,0 +1,13 @@
+.main {
+  min-height: 150vh;
+  background-color: #18181b;
+  margin-left: var(--sidebar-width);
+  margin-top: var(--navbar-height);
+  transition: margin .3s;
+}
+
+@media only screen and (max-width: 800px) {
+  .main {
+    margin-left: 0;
+  }
+}

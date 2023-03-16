@@ -1,0 +1,29 @@
+{
+  "name": "portfolio-v2",
+  "version": "1.0.0",
+  "description": "new personal portfolio",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev -p 3001",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "keywords": [
+    "portfolio"
+  ],
+  "author": "Anas Arif",
+  "license": "ISC",
+  "dependencies": {
+    "@next/bundle-analyzer": "^13.2.4",
+    "@sanity/block-content-to-react": "^3.0.0",
+    "@sanity/client": "^3.4.1",
+    "next": "^13.2.4",
+    "next-sanity-image": "^5.0.0",
+    "nodemailer": "^6.9.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sharp": "^0.31.3",
+    "swr": "^2.1.0"
+  }
+}
