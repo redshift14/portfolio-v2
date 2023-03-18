@@ -1,30 +1,22 @@
-import { useEffect } from 'react'
 import HomePage from '../components/HomePage'
 import { client } from '../lib/client'
-import { useStateContext } from '../context/stateContext'
 
-const Home = ({  }) => {
-
-  // const { setProjectsNames } = useStateContext()
-
-  useEffect(() => {
-    // setProjectsNames(projectsNames)
-  }, [])
+const Home = ({  homeLayout }) => {
 
   return (
-    <HomePage />
+    <HomePage data={homeLayout} />
   )
 }
 
 export default Home
 
-// export const getStaticProps = async () => {
-//   const query = '*[_type == "project" && !(_id in path("drafts.**"))] | order(priority desc) { _id, slug, title }'
+export const getStaticProps = async () => {
 
-//   const projectsNames = await client.fetch(query)
+  const homePageLayoutQuery = '*[_type == "homeLayout" && !(_id in path("drafts.**"))][0]' 
 
-//   return {
-//     props: { projectsNames }
-//   }
-// }
+  const homeLayout = await client.fetch(homePageLayoutQuery)
 
+  return {
+    props: { homeLayout }
+  }
+}

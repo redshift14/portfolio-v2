@@ -1,0 +1,37 @@
+.main, .main_ar {
+  margin-top: var(--navbar-height);
+  min-height: calc(100vh - var( --navbar-height));
+  padding: 40px 90px;
+}
+.main {
+  margin-left: var(--sidebar-width);
+}
+.main_ar {
+  margin-right: var(--sidebar-width);
+}
+.main h4, .main_ar h4 {
+  color: #CDCDCD;
+  font-size: 26px;
+  margin-bottom: 40px;
+}
+@media only screen and (max-width: 800px) {
+  .main, .main_ar {
+    padding: 40px 60px;
+  }
+  .main {
+    margin-left: 0;
+  }
+  .main_ar {
+    margin-right: 0;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .main, .main_ar {
+    padding: 40px 20px;
+  }
+}
+@media only screen and (max-width: 350px) {
+  .main, .main_ar {
+    padding: 40px 10px;
+  }
+}

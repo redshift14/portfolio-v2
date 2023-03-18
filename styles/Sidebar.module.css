@@ -4,6 +4,7 @@
   background-color: black;
   height: 100vh;
   width: var(--sidebar-width);
+  max-width: 100%;
   padding: 25px 15px;
   transition: transform .3s;
   z-index: 1;
@@ -72,7 +73,7 @@
 }
 .projects_title {
   color: gray;
-  font-size: 15px;
+  font-size: 14px;
   margin-bottom: 20px;
 }
 .seperator {

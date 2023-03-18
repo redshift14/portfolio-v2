@@ -1,0 +1,123 @@
+.main, .main_ar {
+  margin-top: var(--navbar-height);
+  min-height: calc(100vh - var( --navbar-height));
+  color: #CDCDCD;
+}
+.main {
+  margin-left: var(--sidebar-width);
+}
+.main_ar {
+  margin-right: var(--sidebar-width);
+}
+.image_container {
+  width: calc(100% - 80px);
+}
+.content_container {
+  padding: 50px 80px 100px 80px; 
+}
+.content_container h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+.text_container h2 {
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 30px;
+  line-height: 30px;
+}
+.text_container h4 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: white;
+}
+.text_container ul {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 18px;
+  gap: 10px;
+}
+.text_container img {
+  margin: 40px 0;
+}
+.text_container h5 {
+  margin-top: 30px;
+  font-size: 16px;
+  color: white;
+}
+.links_container {
+  margin-top: 30px;
+}
+.links_container {
+  display: flex;
+  gap: 10px;
+}
+.links_container h3 {
+  font-size: 24px;
+}
+.links_container a, .links_container p {
+  font-size: 16px;
+  color: white;
+  text-decoration: underline;
+  height: 30px;
+}
+.links_container a:hover {
+  filter: brightness(1.5);
+}
+@media only screen and (max-width: 1100px) {
+  .image_container {
+    width: calc(100% - 50px);
+  }
+  .content_container {
+    padding: 50px 50px 100px 50px; 
+  }
+}
+@media only screen and (max-width: 900px) {
+  .image_container {
+    width: calc(100% - 20px);
+  }
+  .content_container {
+    padding: 50px 20px 100px 20px; 
+  }
+}
+@media only screen and (max-width: 800px) {
+  .main {
+    margin-left: 0;
+  }
+  .main_ar {
+    margin-right: 0;
+  }
+  .image_container {
+    width: calc(100% - 50px);
+  }
+  .content_container {
+    padding: 50px 50px 100px 50px; 
+  }
+}
+@media only screen and (max-width: 600px) {
+  .image_container {
+    width: calc(100% - 30px);
+  }
+  .content_container {
+    padding: 50px 30px 100px 30px; 
+  }
+}
+@media only screen and (max-width: 500px) {
+  .image_container {
+    width: 100%;
+  }
+  .content_container {
+    padding: 50px 20px 100px 20px; 
+  }
+  .content_container h1 {
+    font-size: 24px;
+  }
+  .text_container h2 {
+    font-size: 18px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .content_container {
+    padding: 50px 10px 100px 10px; 
+  }
+}

@@ -1,16 +1,21 @@
-.main {
+.main, .main_ar {
   position: fixed;
   top: 0;
-  right: 0;
   width: calc(100% - var(--sidebar-width));
   height: var(--navbar-height);
-  background-color: #18181b;
-  backdrop-filter: blur(6px);
+  background-color: rgba(24, 24, 27, .8);
+  backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
   transition: all .3s;
+}
+.main {
+  right: 0;
+}
+.main_ar {
+  left: 0;
 }
 .menu_btn {
   border: none;
@@ -52,7 +57,6 @@
   color: white;
   background-color: #0283E9;
 }
-
 .lang_btn {
   display: flex;
   align-items: center;
@@ -87,13 +91,45 @@
   font-weight: 700;
   color: #0283E9;
 }
-
-
 @media only screen and (max-width: 800px) {
-  .main {
+  .main, .main_ar {
     width: 100%;
   }
   .menu_btn {
     visibility: visible;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .menu_btn {
+    padding: 5px;
+  }
+  .menu_btn img {
+    height: 22px;
+    width: 22px;
+  }
+  .buttons {
+    gap: 15px;
+  }
+  .blog_btn {
+    font-size: 13px;
+    padding: 10px;
+  }
+  .lang_btn {
+    gap: 6px;
+    font-size: 13px;
+  }
+  .lang_btn img {
+    height: 20px;
+    width: 20px;
+  }
+}
+@media only screen and (max-width: 350px) {
+  .main, .main_ar {
+    padding: 0 10px;
+  }
+}
+@media only screen and (max-width: 310px) {
+  .buttons {
+    gap: 5px;
   }
 }

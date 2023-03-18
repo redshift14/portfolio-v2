@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useStateContext } from '../context/stateContext'
@@ -7,24 +7,31 @@ import { links } from '../lib/data/sidebarLinks'
 import codeIcon from '../public/icons/code-32.png'
 import closeIcon from '../public/icons/close-24.png'
 
-const Sidebar = ({ locale }) => {
+const Sidebar = ({ locale, asPath }) => {
 
+  const [activeLink, setActiveLink] = useState('')
   const [projectsNames, setProjectsNames] = useState([])
-  const [activeLink, setActiveLink] = useState('home')
-
-  const { showSidebar, setShowSidebar, sidebarRef } = useStateContext()
 
   useEffect(() => {
-    const fetchProjectsNames = async () => {
+    console.log(asPath)
+    
+    if (asPath === '/') setActiveLink('home')
+    else setActiveLink(asPath.split('/')[1])
+  }, [asPath])
+
+  useEffect(() => {
+    const getProjectsNames = async () => {
       const response = await fetch('/api/projectsNames')
       const data = await response.json()
       setProjectsNames(data)
     }
-    fetchProjectsNames()
+    getProjectsNames()
   }, [])
 
+  const { showSidebar, setShowSidebar, sidebarRef } = useStateContext()
+
   const handleClose = () => {
-    setShowSidebar(false)
+    if (showSidebar) setShowSidebar(false)
   }
 
   const { main, main_open, main_ar, top, main_links, link, active, projects_title, seperator, code_icon, icon_container, close_btn  } = classes
@@ -44,11 +51,8 @@ const Sidebar = ({ locale }) => {
           links.map(item => {
             const { id, name, text, to } = item
             return (
-              <Link href={to} key={id}>
-                <p
-                  className={activeLink === name ? `${link} ${active}` : link}
-                  onClick={() => setActiveLink(name)}
-                >
+              <Link href={to} key={id} onClick={handleClose}>
+                <p className={activeLink === name ? `${link} ${active}` : link}>
                   { locale == 'ar-DZ' ? text.ar : text.en }
                 </p>
               </Link>
@@ -57,17 +61,14 @@ const Sidebar = ({ locale }) => {
         }
       </div>
       <hr className={seperator} />
-      <h5 className={projects_title}>{locale == 'ar-DZ' ? 'المشاريع' : 'Projects'}</h5>
+      <h5 className={projects_title}>{locale == 'ar-DZ' ? 'المشاريع' : 'PROJECTS'}</h5>
       <div className={main_links}>
         {
           projectsNames.map(project => {
             const { _id, slug, title } = project
             return (
-              <Link href='/' key={_id}>
-                <p 
-                  className={activeLink === slug.current ? `${link} ${active}` : link}
-                  onClick={() => setActiveLink(slug.current)}
-                >
+              <Link href={`/${slug.current}`} key={_id} onClick={handleClose}>
+                <p className={activeLink === slug.current ? `${link} ${active}` : link}>
                   {locale == 'ar-DZ' ? title.ar : title.en}
                 </p>
               </Link>

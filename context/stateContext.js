@@ -4,9 +4,6 @@ const Context = createContext()
 
 export const StateContext = ({ children }) => {
 
-  const [projectsNames, setProjectsNames] = useState([])
-
-
   const [showSidebar, setShowSidebar] = useState(false)
 
   const sidebarRef = useRef()
@@ -26,7 +23,7 @@ export const StateContext = ({ children }) => {
   }, [sidebarRef, sidebarIconRef])
 
   return (
-    <Context.Provider value={{ projectsNames, setProjectsNames, showSidebar, setShowSidebar, sidebarRef, sidebarIconRef }}>
+    <Context.Provider value={{ showSidebar, setShowSidebar, sidebarRef, sidebarIconRef }}>
       { children }
     </Context.Provider>
   )

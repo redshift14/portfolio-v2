@@ -4,12 +4,12 @@ import Sidebar from './Sidebar'
 
 const Layout = ({ children }) => {
   
-  const { locale } = useRouter()
+  const { locale, pathname, asPath } = useRouter()
 
   return (
     <div dir={ locale == 'ar-DZ' ? 'rtl' : 'ltr' }>
       <header>
-        <Sidebar locale={locale} />
+        <Sidebar locale={locale} pathname={pathname} asPath={asPath} />
         <Navbar />
       </header>
       <main>

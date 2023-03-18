@@ -63,6 +63,9 @@
   box-sizing: border-box;
   font-family: 'Roboto', 'Vazirmatn', sans-serif;
 }
+body {
+  background-color: #18181b;
+}
 a {
   text-decoration: none;
   color: inherit;

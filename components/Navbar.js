@@ -30,10 +30,10 @@ const Navbar = () => {
     setShowSidebar(true)
   }
 
-  const { main, menu_btn, buttons, lang_btn, lang, active, switcher, blog_btn } = classes
+  const { main, main_ar, menu_btn, buttons, lang_btn, lang, active, switcher, blog_btn } = classes
 
   return (
-    <nav className={main}>
+    <nav className={locale === 'ar-DZ' ? main_ar : main}>
       <button className={menu_btn} onClick={handleShowSidebar}>
         <Image src={menuIcon} priority alt='menu-icon' ref={sidebarIconRef} />
       </button>
