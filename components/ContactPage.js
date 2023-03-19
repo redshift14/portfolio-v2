@@ -1,10 +1,7 @@
-import { useRouter } from 'next/router'
 import ContactForm from './ContactForm'
 import classes from '../styles/ContactPage.module.css'
 
-const ContactPage = () => {
-
-  const { locale } = useRouter()
+const ContactPage = ({ locale }) => {
 
   return (
     <section className={locale == 'ar-DZ' ? classes.main_ar : classes.main}>

@@ -1,0 +1,113 @@
+.main, .main_ar {
+  margin-top: var(--navbar-height);
+  min-height: calc(100vh - var( --navbar-height));
+  color: #CDCDCD;
+  padding: 50px 6%;
+}
+.main {
+  margin-left: var(--sidebar-width);
+}
+.main_ar {
+  margin-right: var(--sidebar-width);
+}
+.main_info p {
+  color: gray;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+.main_info h1 {
+  font-size: 40px;
+  color: white;
+  margin-bottom: 10px;
+}
+.main_info h3 {
+  font-size: 20px;
+  font-weight: 400;
+}
+.table_of_content_container {
+  margin-top: 40px;
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+.table_title, .table_title_show {
+  background-color: #212121;
+  border-radius: 5px;
+  padding: 15px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+.table_title_show {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.chevron_icon_ar {
+  transform: rotate(180deg);
+}
+.chevron_icon, .chevron_icon_ar {
+  width: 15px;
+  height: 15px;
+}
+.table_title_show .chevron_icon, .table_title_show .chevron_icon_ar {
+  transform: rotate(90deg);
+}
+.table_title h4, .table_title_show h4 {
+  font-weight: 400;
+  font-size: 18px;
+  color: white;
+}
+.table_content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: #141414;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 20px;
+}
+.table_content p {
+  font-size: 18px;
+  color: #0283E9;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.body_text_container {
+  margin-top: 50px;
+}
+.body_text_container h2 {
+  font-size: 28px;
+  margin-bottom: 15px;
+  color: white;
+}
+.body_text_container p {
+  font-size: 18px;
+  margin-bottom: 20px;
+  line-height: 28px;
+}
+@media only screen and (max-width: 800px) {
+  .main {
+    margin-left: 0;
+  }
+  .main_ar {
+    margin-right: 0;
+  }
+}
+@media only screen and (max-width: 550px) {
+  .main, .main_ar {
+    padding: 50px 20px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .body_text_container p {
+    font-size: 16px;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .main_info h1 {
+    font-size: 32px;
+  }
+  .main, .main_ar {
+    padding: 50px 10px;
+  }
+}

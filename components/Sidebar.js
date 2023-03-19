@@ -13,8 +13,6 @@ const Sidebar = ({ locale, asPath }) => {
   const [projectsNames, setProjectsNames] = useState([])
 
   useEffect(() => {
-    console.log(asPath)
-    
     if (asPath === '/') setActiveLink('home')
     else setActiveLink(asPath.split('/')[1])
   }, [asPath])

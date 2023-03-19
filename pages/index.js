@@ -1,10 +1,17 @@
+import { useRouter } from 'next/router'
 import HomePage from '../components/HomePage'
+import HomeHead from '../html-heads/HomeHead'
 import { client } from '../lib/client'
 
 const Home = ({  homeLayout }) => {
 
+  const { locale } = useRouter()
+
   return (
-    <HomePage data={homeLayout} />
+    <>
+      <HomeHead locale={locale} />
+      <HomePage data={homeLayout} locale={locale} />
+    </>
   )
 }
 

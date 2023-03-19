@@ -1,9 +1,17 @@
-import { client } from "../lib/client"
-import ResumePage from "../components/ResumePage"
+import { useRouter } from 'next/router'
+import ResumeHead from '../html-heads/ResumeHead'
+import { client } from '../lib/client'
+import ResumePage from '../components/ResumePage'
 
 const Resume = ({ resumeData }) => {
+
+  const { locale } = useRouter()
+
   return (
-    <ResumePage data={resumeData} />
+    <>
+      <ResumeHead locale={locale} />    
+      <ResumePage data={resumeData} locale={locale} />
+    </>
   )
 }
 

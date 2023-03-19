@@ -1,11 +1,8 @@
-import { useRouter } from 'next/router'
 import BlockContent from '@sanity/block-content-to-react'
 import ContactForm from './ContactForm'
 import classes from '../styles/HomePage.module.css'
 
-const HomePage = ({ data }) => {
-
-  const { locale } = useRouter()
+const HomePage = ({ data, locale }) => {
 
   const { main, main_ar, text_container, form_container } = classes
 

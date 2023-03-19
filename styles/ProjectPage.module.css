@@ -45,6 +45,9 @@
   font-size: 16px;
   color: white;
 }
+.text_container p {
+  line-height: 28px;
+}
 .links_container {
   margin-top: 30px;
 }

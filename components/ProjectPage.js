@@ -1,30 +1,8 @@
-import { useRouter } from 'next/router'
-import Image from 'next/image'
-import { useNextSanityImage } from 'next-sanity-image'
-import { client } from '../lib/client'
 import BlockContent from '@sanity/block-content-to-react'
+import SanityImage from './SanityImage'
 import classes from '../styles/ProjectPage.module.css'
 
-const ProjectPage = ({ data }) => {
-
-  const { locale } = useRouter()
-
-  const { main, main_ar, image_container, content_container, text_container, links_container } = classes
-
-  const SanityImage = ({ asset, alt }) => {
-    const imageProps = useNextSanityImage(client, asset);
-    if (!imageProps) return null
-    return (
-      <Image 
-        {...imageProps} 			
-        style={{ width: '100%', height: '100%', objectFit:'cover' }} 
-        loader={imageProps.loader}
-        sizes='100vw'
-        alt={alt}
-        priority 
-      />
-    )
-  }
+const ProjectPage = ({ data, locale }) => {
 
   const serializers = {
     types: {
@@ -51,6 +29,8 @@ const ProjectPage = ({ data }) => {
   }
 
   const { description, deploymentLink, repositoryLink, title, coverImage } = data
+
+  const { main, main_ar, image_container, content_container, text_container, links_container } = classes
 
   return (
     <section className={locale == 'ar-DZ' ? main_ar : main}> 

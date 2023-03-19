@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import Image from 'next/image'
 import ResumeProject from './ResumeProject'
 import classes from '../styles/ResumePage.module.css' 
@@ -6,9 +5,7 @@ import mailIcon from '../public/icons/mail.png'
 import linkedInIcon from '../public/icons/linkedin.png'
 import locationIcon from '../public/icons/address.png'
 
-const ResumePage = ({ data }) => {
-
-  const { locale } = useRouter()
+const ResumePage = ({ data, locale }) => {
 
   const { education, email, languages, linkedIn, location, projectsDone, skills, subtitle } = data
 

@@ -13,7 +13,7 @@ const Navbar = () => {
 
   const { pathname, query, asPath, locale } = router
 
-  const { showSidebar, setShowSidebar, sidebarIconRef } = useStateContext()
+  const { setShowSidebar, sidebarIconRef } = useStateContext()
 
   const [isArabic, setIsArabic] = useState(false)
 
@@ -50,7 +50,7 @@ const Navbar = () => {
             </span>
           </div>
         </button>
-        <button className={blog_btn}>
+        <button className={blog_btn} onClick={() => router.push('/blog')}>
           {locale == 'ar-DZ' ? 'المدونة' : 'Blog'}
         </button>
       </div>

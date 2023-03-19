@@ -1,10 +1,19 @@
+import { useRouter } from 'next/router'
+import ProjectHead from '../html-heads/ProjectHead'
 import ProjectPage from '../components/ProjectPage'
 import { client } from '../lib/client'
 
 const Project = ({ project }) => {
 
+  const { locale } = useRouter()
+
+  const { title } = project
+
   return (
-    <ProjectPage data={project} />
+    <>
+      <ProjectHead locale={locale} titleEn={title.en} titleAr={title.ar} />
+      <ProjectPage data={project} locale={locale} />
+    </>
   )
 }
 

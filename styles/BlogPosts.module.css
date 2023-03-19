@@ -1,0 +1,52 @@
+.main, .main_ar {
+  margin-top: var(--navbar-height);
+  min-height: calc(100vh - var( --navbar-height));
+  color: #CDCDCD;
+  padding: 50px 8%;
+}
+.main {
+  margin-left: var(--sidebar-width);
+}
+.main_ar {
+  margin-right: var(--sidebar-width);
+}
+.page_title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 60px;
+}
+.post_cards {
+  display: flex;
+  flex-direction: column;
+}
+.post_card {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-bottom: 1px solid grey;
+  cursor: pointer;
+}
+.post_card p {
+  color: gray;
+  font-size: 14px;
+}
+.post_card h2 {
+  color: white;
+  font-size: 28px;
+}
+.post_card h5 {
+  font-size: 16px;
+  font-weight: 400;
+}
+.post_card:hover {
+  background-color: #1f1f22;
+}
+@media only screen and (max-width: 800px) {
+  .main {
+    margin-left: 0;
+  }
+  .main_ar {
+    margin-right: 0;
+  }
+}
