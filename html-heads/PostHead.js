@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-const PostHead = ({ locale, titleEn, titleAr, subtitleAr, subtitleEn }) => {
+const PostHead = ({ locale, titleEn, titleAr, subtitleAr, subtitleEn, keywordsEn, keywordsAr }) => {
   return (
     <Head>
       {
@@ -8,12 +8,12 @@ const PostHead = ({ locale, titleEn, titleAr, subtitleAr, subtitleEn }) => {
         <>
           <title>{titleAr}</title>
           <meta name='description' content={`مقال يتحدث حول: ${subtitleAr}`} />
-          <meta name='keywords' content='برمجة, تطوير مواقع الويب, مدونة, مقالات' />
+          <meta name='keywords' content={keywordsAr} />
         </> :
         <>
           <title>{titleEn}</title>
           <meta name='description' content={`Blog post that talks about ${subtitleEn}`} />
-          <meta name='keywords' content='programming, web development, personal blog' />
+          <meta name='keywords' content={keywordsEn} />
         </>
       }
     </Head>

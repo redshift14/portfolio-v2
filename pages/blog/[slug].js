@@ -7,7 +7,10 @@ const Post = ({ post }) => {
 
   const { locale } = useRouter()
 
-  const { title, subtitle } = post
+  const { title, subtitle, keywords } = post
+
+  const keywordsAr = keywords.map(keyword => (keyword.ar))
+  const keywordsEn = keywords.map(keyword => (keyword.en))
 
   return (
     <>
@@ -17,6 +20,8 @@ const Post = ({ post }) => {
         titleEn={title.en} 
         subtitleAr={subtitle.ar} 
         subtitleEn={subtitle.en} 
+        keywordsAr={keywordsAr.toString()}
+        keywordsEn={keywordsEn.toString()}
       />    
       <BlogPost post={post} locale={locale} />
     </>

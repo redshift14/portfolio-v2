@@ -18,7 +18,7 @@ const Blog = ({ blogPosts }) => {
 export default Blog
 
 export const getStaticProps = async () => {
-  const query = '*[_type == "post" && !(_id in path("drafts.**"))]{_id, slug, title, subtitle, publishedAt}'
+  const query = '*[_type == "post" && !(_id in path("drafts.**"))]{_id, slug, title, subtitle, publishedAt, readTime}'
   const blogPosts = await client.fetch(query)
 
   return {

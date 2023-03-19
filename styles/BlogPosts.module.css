@@ -10,6 +10,10 @@
 .main_ar {
   margin-right: var(--sidebar-width);
 }
+.metadata {
+  display: flex;
+  gap: 10px;
+}
 .page_title {
   text-align: center;
   font-size: 36px;

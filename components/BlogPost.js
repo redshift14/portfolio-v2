@@ -11,21 +11,31 @@ const BlogPost = ({ post, locale }) => {
 
   const [showTable, setShowTable] = useState(false)
 
-  const { body, title, subtitle, publishedAt } = post
+  const { body, title, subtitle, publishedAt, readTime } = post
 
   const date = new Date(publishedAt)
 
-  let titlesElements = []
+  let titlesElementsEn = []
+  let titlesElementsAr = []
 
   body.en.forEach(element => {
-    if (element.style === 'h2') titlesElements.push(element)
+    if (element.style === 'h2') titlesElementsEn.push(element)
+  })
+  body.ar.forEach(element => {
+    if (element.style === 'h2') titlesElementsAr.push(element)
   })
 
-  let titles = []
+  let titlesEn = []
+  let titlesAr = []
 
-  titlesElements.forEach(element => {
+  titlesElementsEn.forEach(element => {
     element.children.forEach(child => {
-      titles.push(child.text)
+      titlesEn.push(child.text)
+    })
+  })
+  titlesElementsAr.forEach(element => {
+    element.children.forEach(child => {
+      titlesAr.push(child.text)
     })
   })
 
@@ -60,12 +70,17 @@ const BlogPost = ({ post, locale }) => {
     }
   }
 
-  const { main, main_ar, main_info, body_text_container, table_of_content_container, table_title, chevron_icon, chevron_icon_ar, table_title_show, table_content } = classes
+  const { main, main_ar, main_info, metadata, body_text_container, table_of_content_container, table_title, chevron_icon, chevron_icon_ar, table_title_show, table_content } = classes
 
   return (
     <section className={locale == 'ar-DZ' ? main_ar : main}>
       <div className={main_info}>
-        <p>{`${getMonthName(date, locale)} ${date.getDate()}, ${date.getFullYear()}`}</p>
+        <div className={metadata}>
+          <p>{`${getMonthName(date, locale)} ${date.getDate()}, ${date.getFullYear()}`}</p>
+          <p>
+            {locale == 'ar-DZ' ? readTime.ar : readTime.en}
+          </p>
+        </div>
         <h1>{locale == 'ar-DZ' ? title.ar : title.en}</h1>
         <h3>{locale == 'ar-DZ' ? subtitle.ar : subtitle.en}</h3>
       </div>
@@ -74,7 +89,7 @@ const BlogPost = ({ post, locale }) => {
           className={showTable ? table_title_show : table_title} 
           onClick={() => setShowTable(v => !v)}
         >
-          <Image 
+          <Image
             src={chevronIcon} 
             priority 
             alt='chevron' 
@@ -86,20 +101,35 @@ const BlogPost = ({ post, locale }) => {
           showTable &&
           <div className={table_content}>
             {
-              titles.length > 0 &&
-              titles.map((element, index) => {
-                return (
-                  <p key={index} onClick={() => scrollToTitle(element.replace(' ', '-'))}>
-                    {element}
-                  </p>
-                )
-              })
+              locale == 'ar-DZ' ? (
+                titlesAr.length > 0 &&
+                titlesAr.map((element, index) => {
+                  return (
+                    <p key={index} onClick={() => scrollToTitle(element.replace(' ', '-'))}>
+                      {element}
+                    </p>
+                  )
+                })
+              ) : 
+              (
+                titlesEn.length > 0 &&
+                titlesEn.map((element, index) => {
+                  return (
+                    <p key={index} onClick={() => scrollToTitle(element.replace(' ', '-'))}>
+                      {element}
+                    </p>
+                  )
+                })
+              )
             }
           </div>
         }
       </div>
       <div className={body_text_container}>
-        <BlockContent blocks={body.en} serializers={serializers} />
+        <BlockContent 
+          blocks={locale == 'ar-DZ' ? body.ar : body.en} 
+          serializers={serializers} 
+        />
       </div>
     </section>
   )

@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import Head from 'next/head'
 import Layout from '../components/Layout'
 import { StateContext } from '../context/stateContext'
@@ -20,6 +21,7 @@ const MyApp = ({ Component, pageProps }) => {
           <Component {...pageProps} />
         </Layout>
       </StateContext>
+      <Analytics />
     </>
   )
 }
