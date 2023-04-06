@@ -89,6 +89,17 @@
   margin-bottom: 20px;
   line-height: 28px;
 }
+.body_text_container a {
+  color: #0283E9;
+  font-weight: 600;
+  text-decoration: underline;
+}
+.body_text_container ul, .body_text_container ol {
+  font-size: 18px;
+  line-height: 28px;
+  padding: 0 20px;
+  margin-bottom: 20px;
+}
 .body_text_container img {
   margin-bottom: 30px;
 }

@@ -4,8 +4,8 @@
  * @author Rose Pritchard
  */
 
- code[class*="language-"],
- pre[class*="language-"] {  
+code[class*="language-"],
+pre[class*="language-"] {  
   font-family: 'IBM Plex Mono', monospace;
   color: #ccc;
   background: none;
@@ -25,7 +25,7 @@
   -ms-hyphens: none;
   hyphens: none;
 
- }
+}
  
  /* Code blocks */
 pre[class*="language-"] {

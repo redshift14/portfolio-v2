@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Refractor from 'react-refractor'
+import json from 'refractor/lang/json'
 import Image from 'next/image'
 import BlockContent from '@sanity/block-content-to-react'
 import SanityImage from './SanityImage'
@@ -18,22 +19,22 @@ const BlogPost = ({ post, locale }) => {
   let titlesElementsEn = []
   let titlesElementsAr = []
 
-  body.en.forEach(element => {
+  body.en?.forEach(element => {
     if (element.style === 'h2') titlesElementsEn.push(element)
   })
-  body.ar.forEach(element => {
+  body.ar?.forEach(element => {
     if (element.style === 'h2') titlesElementsAr.push(element)
   })
 
   let titlesEn = []
   let titlesAr = []
 
-  titlesElementsEn.forEach(element => {
+  titlesElementsEn?.forEach(element => {
     element.children.forEach(child => {
       titlesEn.push(child.text)
     })
   })
-  titlesElementsAr.forEach(element => {
+  titlesElementsAr?.forEach(element => {
     element.children.forEach(child => {
       titlesAr.push(child.text)
     })
@@ -46,12 +47,14 @@ const BlogPost = ({ post, locale }) => {
     window.scrollTo({ top: targetPos })
   }
 
+  Refractor.registerLanguage(json)
+
   const serializers = {
     types: {
       block: props => {
         switch(props.node.style) {
           case 'h2':
-          return <h2 id={props.children[0].replace(' ', '-')}>{props.children}</h2> 
+          return <h2 id={props.children[0].replaceAll(' ', '-')}>{props.children}</h2> 
           default: 
           return <p>{props.children}</p>
         }
@@ -105,7 +108,7 @@ const BlogPost = ({ post, locale }) => {
                 titlesAr.length > 0 &&
                 titlesAr.map((element, index) => {
                   return (
-                    <p key={index} onClick={() => scrollToTitle(element.replace(' ', '-'))}>
+                    <p key={index} onClick={() => scrollToTitle(element.replaceAll(' ', '-'))}>
                       {element}
                     </p>
                   )
@@ -115,7 +118,7 @@ const BlogPost = ({ post, locale }) => {
                 titlesEn.length > 0 &&
                 titlesEn.map((element, index) => {
                   return (
-                    <p key={index} onClick={() => scrollToTitle(element.replace(' ', '-'))}>
+                    <p key={index} onClick={() => scrollToTitle(element.replaceAll(' ', '-'))}>
                       {element}
                     </p>
                   )
