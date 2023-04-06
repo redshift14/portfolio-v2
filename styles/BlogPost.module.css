@@ -102,6 +102,29 @@
 }
 .body_text_container img {
   margin-bottom: 30px;
+  border: 1px solid #CDCDCD;
+}
+.scroll_to_top_button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  outline: none;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #0283E9;
+  cursor: pointer;
+  z-index: 10;
+}
+.scroll_to_top_button:hover {
+  background-color: #141414;
+}
+.scroll_to_top_icon {
+  rotate: -90deg;
+  height: 100%;
+  width: 100%;
 }
 @media only screen and (max-width: 800px) {
   .main {

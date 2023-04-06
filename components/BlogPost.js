@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Refractor from 'react-refractor'
 import json from 'refractor/lang/json'
+import jsx from 'refractor/lang/jsx'
 import Image from 'next/image'
 import BlockContent from '@sanity/block-content-to-react'
 import SanityImage from './SanityImage'
@@ -9,6 +10,15 @@ import chevronIcon from '../public/icons/chevron-right-50.png'
 import classes from '../styles/BlogPost.module.css'
 
 const BlogPost = ({ post, locale }) => {
+
+  const [offset, setOffset] = useState(0)
+
+  useEffect(() => {
+    const onScroll = () => setOffset(window.pageYOffset)
+    window.removeEventListener('scroll', onScroll)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const [showTable, setShowTable] = useState(false)
 
@@ -40,7 +50,8 @@ const BlogPost = ({ post, locale }) => {
     })
   })
 
-  const scrollToTitle = (id) => {
+  const scrollToElement = (id) => {
+    console.log(id);
     const target = document.getElementById(id)
     const offest = 100
     const targetPos = target.getBoundingClientRect().top + window.scrollY - offest
@@ -48,6 +59,7 @@ const BlogPost = ({ post, locale }) => {
   }
 
   Refractor.registerLanguage(json)
+  Refractor.registerLanguage(jsx)
 
   const serializers = {
     types: {
@@ -73,7 +85,7 @@ const BlogPost = ({ post, locale }) => {
     }
   }
 
-  const { main, main_ar, main_info, metadata, body_text_container, table_of_content_container, table_title, chevron_icon, chevron_icon_ar, table_title_show, table_content } = classes
+  const { main, main_ar, main_info, metadata, body_text_container, table_of_content_container, table_title, chevron_icon, chevron_icon_ar, table_title_show, table_content, scroll_to_top_button, scroll_to_top_icon } = classes
 
   return (
     <section className={locale == 'ar-DZ' ? main_ar : main}>
@@ -87,7 +99,7 @@ const BlogPost = ({ post, locale }) => {
         <h1>{locale == 'ar-DZ' ? title.ar : title.en}</h1>
         <h3>{locale == 'ar-DZ' ? subtitle.ar : subtitle.en}</h3>
       </div>
-      <div className={table_of_content_container}>
+      <div className={table_of_content_container} id='table-container'>
         <div 
           className={showTable ? table_title_show : table_title} 
           onClick={() => setShowTable(v => !v)}
@@ -108,7 +120,7 @@ const BlogPost = ({ post, locale }) => {
                 titlesAr.length > 0 &&
                 titlesAr.map((element, index) => {
                   return (
-                    <p key={index} onClick={() => scrollToTitle(element.replaceAll(' ', '-'))}>
+                    <p key={index} onClick={() => scrollToElement(element.replaceAll(' ', '-'))}>
                       {element}
                     </p>
                   )
@@ -118,7 +130,7 @@ const BlogPost = ({ post, locale }) => {
                 titlesEn.length > 0 &&
                 titlesEn.map((element, index) => {
                   return (
-                    <p key={index} onClick={() => scrollToTitle(element.replaceAll(' ', '-'))}>
+                    <p key={index} onClick={() => scrollToElement(element.replaceAll(' ', '-'))}>
                       {element}
                     </p>
                   )
@@ -134,6 +146,17 @@ const BlogPost = ({ post, locale }) => {
           serializers={serializers} 
         />
       </div>
+      {
+        offset > 1000 && 
+        <button className={scroll_to_top_button} onClick={() => scrollToElement('table-container')}>
+          <Image
+            src={chevronIcon} 
+            priority 
+            alt='chevron-top' 
+            className={scroll_to_top_icon} 
+          />
+        </button>
+      }
     </section>
   )
 }
